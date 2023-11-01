@@ -1,4 +1,5 @@
-apiVersion: monitoring.coreos.com/v1 kind: ServiceMonitor
+apiVersion: monitoring.coreos.com/v1 
+kind: ServiceMonitor
 metadata:
 {{- if lower .Values.sename}}
   name: {{lower .Values.name}}-{{ lower .Values.sename}}-monitor
