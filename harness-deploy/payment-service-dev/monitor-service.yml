@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1 kind: ServiceMonitor
+metadata:
+{{- if lower .Values.sename}}
+  name: {{lower .Values.name}}-{{ lower .Values.sename}}-monitor
+{{- else }}
+  name: {{ lower .Values.name}}-monitor
+{{- end }}
+  labels:
+    release: prometheus 
+    app: prometheus
+spec:
+  jobLabel: job
+  endpoints:
+    - interval: 30s
+      port: web 
+      path: /
+  selector:
+    matchLabels:
+      app: {{lower .Values.name}}-{{ lower .Values.sename}}-svc
