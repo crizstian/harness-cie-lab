@@ -8,17 +8,18 @@ metadata:
  {{- end }}
  annotations:
    kubernetes.io/ingress.class: nginx
-   kubernetes.io/ingress.global-static-ip-name: "bootcamp-static-ip"
+    nginx.ingress.kubernetes.io/snippets-enabled: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
   {{- if lower .Values.sename}}
-  - host: {{ lower .Values.sename }}.cie-bootcamp.co.uk
+  - host: {{ lower .Values.sename }}.citibanamex.harness-demo.site
   {{- else }}
-  - host: cie-bootcamp.co.uk
+  - host: citibanamex.harness-demo.site
   {{- end }}
     http:
      paths:
-     - pathType: ImplementationSpecific
+     - pathType: Prefix
        backend:
        {{- if lower .Values.sename}}
           service:
