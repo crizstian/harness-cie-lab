@@ -6,12 +6,15 @@ metadata:
 {{- else }}
   name: {{ lower .Values.name}}-svc
 {{- end }}
+  labels:
+    job: {{lower .Values.name}}-{{lower .Values.sename}}
 spec:
   type: {{.Values.serviceType}}
   ports:
   - port: {{.Values.servicePort}}
     targetPort: {{.Values.serviceTargetPort}}
     protocol: TCP
+    name: web
   selector:
   {{- if lower .Values.sename }}
     app: {{lower .Values.name}}-{{lower .Values.sename}}
