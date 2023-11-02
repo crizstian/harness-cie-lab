@@ -1,11 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-{{- if lower .Values.sename}}
   name: {{lower .Values.name}}-{{ lower .Values.sename}}-svc
-{{- else }}
-  name: {{ lower .Values.name}}-svc
-{{- end }}
   labels:
     job: {{lower .Values.name}}-{{ lower .Values.sename}}
     app: {{lower .Values.name}}-{{ lower .Values.sename}}-monitor
@@ -17,8 +13,4 @@ spec:
     protocol: TCP
     name: web
   selector:
-  {{- if lower .Values.sename }}
     app: {{lower .Values.name}}-{{lower .Values.sename}}
-  {{- else }}
-    app: {{lower .Values.name}}
- {{- end }}
