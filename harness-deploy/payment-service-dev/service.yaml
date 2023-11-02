@@ -8,6 +8,7 @@ metadata:
 {{- end }}
   labels:
     job: {{lower .Values.name}}-{{lower .Values.sename}}
+    app: {{lower .Values.name}}-{{ lower .Values.sename}}-svc
 spec:
   type: {{.Values.serviceType}}
   ports:
