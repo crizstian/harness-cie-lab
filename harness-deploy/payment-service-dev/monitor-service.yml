@@ -3,8 +3,8 @@ kind: ServiceMonitor
 metadata:
   name: {{lower .Values.name}}-{{ lower .Values.sename}}-monitor
   labels:
-    release: prometheus 
-    app: prometheus
+    release: release-a5acff 
+    app: release-a5acff
 spec:
   jobLabel: job
   endpoints:
