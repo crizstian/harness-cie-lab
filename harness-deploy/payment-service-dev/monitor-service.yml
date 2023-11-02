@@ -1,11 +1,7 @@
 apiVersion: monitoring.coreos.com/v1 
 kind: ServiceMonitor
 metadata:
-{{- if lower .Values.sename}}
   name: {{lower .Values.name}}-{{ lower .Values.sename}}-monitor
-{{- else }}
-  name: {{ lower .Values.name}}-monitor
-{{- end }}
   labels:
     release: prometheus 
     app: prometheus
@@ -17,4 +13,4 @@ spec:
       path: /custom/metrics
   selector:
     matchLabels:
-      app: {{lower .Values.name}}-{{ lower .Values.sename}}-svc
+      app: service-{{lower .Values.name}}-{{ lower .Values.sename}}
