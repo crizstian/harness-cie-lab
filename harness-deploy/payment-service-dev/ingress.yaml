@@ -11,7 +11,7 @@ spec:
   - host: {{ lower .Values.sename }}.citibanamex.harness-demo.site
     http:
      paths:
-     - pathType: Prefix
+     - pathType: ImplementationSpecific
        backend:
           service:
              name: payment-service-{{lower .Values.sename }}-svc
