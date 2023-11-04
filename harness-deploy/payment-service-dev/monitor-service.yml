@@ -6,11 +6,10 @@ metadata:
     release: prometheus 
     app: prometheus
 spec:
-  jobLabel: job
   endpoints:
     - interval: 30s
       port: web 
-      path: /application/metrics
+      path: /actuator/prometheus
   selector:
     matchLabels:
-      app: service-{{lower .Values.name}}-{{ lower .Values.sename}}
+      app: {{lower .Values.name}}-{{ lower .Values.sename}}
