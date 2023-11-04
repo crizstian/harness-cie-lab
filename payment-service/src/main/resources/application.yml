@@ -4,13 +4,6 @@ management.endpoints.web.base-path: "/"
 management.endpoints.web.exposure.include: "*"
 management.health.defaults.enabled: true
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: [ "prometheus" ]
-
-
 harness:
   se: ${HARNESS_SE:nik}
   build: ${HARNESS_BUILD:1}
