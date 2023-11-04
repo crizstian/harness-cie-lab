@@ -9,7 +9,7 @@ spec:
   endpoints:
     - interval: 30s
       port: web 
-      path: /actuator/prometheus
+      path: /application
   selector:
     matchLabels:
       app: {{lower .Values.name}}-{{ lower .Values.sename}}
