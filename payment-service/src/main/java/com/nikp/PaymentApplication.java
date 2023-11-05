@@ -23,6 +23,9 @@ import com.nikp.payment.api.PaymentService;
 import io.harness.cf.client.api.CfClient;
 import io.harness.cf.client.api.Config;
 
+import io.micrometer.core.aop.TimedAspect;
+import io.micrometer.core.instrument.MeterRegistry;
+
 
 @SpringBootApplication
 @EnableAspectJAutoProxy
@@ -93,5 +96,10 @@ public class PaymentApplication {
         //HACK Avoids duplicate metrics registration in case of Spring Boot dev-tools restarts
         CollectorRegistry.defaultRegistry.clear();
     }
+
+    @Bean
+	public TimedAspect timedAspect(MeterRegistry registry) {
+		return new TimedAspect(registry);
+	}
 
 }
