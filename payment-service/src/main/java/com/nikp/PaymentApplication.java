@@ -83,4 +83,4 @@ public class PaymentApplication {
         CollectorRegistry.defaultRegistry.clear();
     }
 
-}. 
+}
