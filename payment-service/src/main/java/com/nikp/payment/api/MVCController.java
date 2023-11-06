@@ -24,9 +24,6 @@ import com.nikp.payment.infrastructure.persistance.PaymentRepository;
 import javax.annotation.PostConstruct;
 import javax.ws.rs.ForbiddenException;
 
-import io.micrometer.core.annotation.Timed;
-import io.micrometer.core.instrument.MeterRegistry;
-
 @Controller
 public class MVCController {
 
@@ -36,8 +33,6 @@ public class MVCController {
   @Autowired
   private CaptchaService captchaService;
 
-  @Autowired
-  private MeterRegistry registry;
   
   @Value("${harness.build}" )
   String buildNumber;
@@ -55,7 +50,6 @@ public class MVCController {
   private EventBus eventBus;
 
   @RequestMapping("/")
-  @Timed
   public String indexView(@RequestParam(name = "number", required = false, defaultValue = "") 
   String number, @RequestParam(name = "sename", required = false, defaultValue = "") 
   String sename, Model model) {
@@ -69,7 +63,6 @@ public class MVCController {
 
   
   @PostMapping("/mvc/payment")
-  @Timed
   public String paymentSubmit(@ModelAttribute PaymentDto paymentDto,@RequestParam(value="g-recaptcha-response") String response,@RequestParam(name = "number", required = false, defaultValue = "") 
   String number, @RequestParam(name = "sename", required = false, defaultValue = "") 
   String sename, Model model) {
@@ -104,7 +97,6 @@ public class MVCController {
   }
 
   @GetMapping("/mvc/createPayment")
-  @Timed
   public String paymentForm( @ModelAttribute PaymentDto paymentDto,@RequestParam(name = "number", required = false, defaultValue = "") 
   String number, @RequestParam(name = "sename", required = false, defaultValue = "") 
   String sename, Model model) {
@@ -120,7 +112,6 @@ public class MVCController {
   }
   
   @PostMapping("/mvc/payment/bank")
-  @Timed
   public String paymentSubmitBank(@ModelAttribute PaymentDto paymentDto,@RequestParam(name = "number", required = false, defaultValue = "") 
   String number, @RequestParam(name = "sename", required = false, defaultValue = "") 
   String sename, Model model) {

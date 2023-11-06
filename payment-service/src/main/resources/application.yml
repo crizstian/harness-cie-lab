@@ -1,7 +1,15 @@
 payment-config.supportedAccounts: BARCELONA,TENERIFE,CRETE,LONDON,PARIS
 
-management.endpoints.web.base-path: "/"
-management.health.defaults.enabled: true
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: metrics,info,health,prometheus
 
 harness:
   se: ${HARNESS_SE:nik}

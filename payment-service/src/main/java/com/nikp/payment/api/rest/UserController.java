@@ -19,17 +19,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import io.micrometer.core.annotation.Timed;
-import io.micrometer.core.instrument.MeterRegistry;
 
 @RestController
 @RequestMapping("/users")
-@Timed
 public class UserController {
   private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
-
-  @Autowired
-  private MeterRegistry registry;
 
   private final UserService userService;
 
@@ -55,7 +49,6 @@ public class UserController {
   }
 
   @GetMapping(value = "payments-for-user/{userId}", produces = "application/json")
-  @Timed
   public PaymentAndUser paymentAndUsers(@PathVariable final String userId) throws UserNotFoundException {
     Optional<PaymentAndUser> paymentAndUsersForUserId = userService.getPaymentAndUsersForUserId(userId);
     if (!paymentAndUsersForUserId.isPresent()) {
