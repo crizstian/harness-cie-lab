@@ -20,6 +20,7 @@ serviceTargetPort: 8080
 
 #Templatise this using harness variables.
 sename: <+pipeline.variables.seusername>
+dns: <+pipeline.variables.dns>
 
 # Specify all environment variables to be added to the container.
 # The following two maps, config and secrets, are put into a ConfigMap
