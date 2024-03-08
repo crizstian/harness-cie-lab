@@ -8,7 +8,7 @@ metadata:
    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: {{ lower .Values.sename }}.citibanamex.harness-demo.site
+  - host: {{ lower .Values.sename }}.{{ lower .Values.dns }}
     http:
      paths:
      - pathType: ImplementationSpecific
