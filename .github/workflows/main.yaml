@@ -16,8 +16,4 @@ jobs:
         
       - name: Run commands in Docker container
         run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace nikpap/mvn-openjdk-8:harness /bin/bash -c "
-            cd payment-service
-            mvn -Dmaven.test.skip=true clean install -X
-            ls -la
-          "
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace nikpap/mvn-openjdk-8:harness /bin/bash -c "cd payment-service && mvn -Dmaven.test.skip=true clean install -X && ls -la"
