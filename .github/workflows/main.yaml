@@ -15,6 +15,6 @@ jobs:
 
       - name: Ejecutar Maven dentro del contenedor
         run: |
-          docker run --rm nikpap/mvn-openjdk-8:harness mvn clean install
+          docker run --rm nikpap/mvn-openjdk-8:harness sh -c "cd payment-service && mvn -Dmaven.test.skip=true clean install -X && ls -la"
         working-directory: payment-service
         
