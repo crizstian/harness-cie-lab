@@ -13,12 +13,8 @@ jobs:
       - name: Comprobar el código
         uses: actions/checkout@v2
 
-      - name: Configurar JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '8' # Especifica que deseas usar OpenJDK 8
-          distribution: 'adopt' # Puedes cambiar a 'zulu' si prefieres esa distribución
-
-      - name: Compilar con Maven
-        run: mvn clean install
+      - name: Ejecutar Maven dentro del contenedor
+        run: |
+          docker run --rm nikpap/mvn-openjdk-8:harness mvn clean install
         working-directory: payment-service
+        
