@@ -16,7 +16,8 @@ jobs:
       - name: Configurar JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '11' # Especifica la versión de Java que necesitas
+          java-version: '8' # Especifica que deseas usar OpenJDK 8
+          distribution: 'adopt' # Puedes cambiar a 'zulu' si prefieres esa distribución
 
       - name: Compilar con Maven
         run: mvn clean install
