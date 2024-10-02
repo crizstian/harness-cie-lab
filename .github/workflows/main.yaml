@@ -13,8 +13,11 @@ jobs:
       - name: Comprobar el código
         uses: actions/checkout@v2
 
-      - name: Ejecutar Maven dentro del contenedor
-        run: |
-          docker run --rm nikpap/mvn-openjdk-8:harness bash -c "mvn -Dmaven.test.skip=true clean install -X"
-        working-directory: payment-service
         
+      - name: Run commands in Docker container
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace nikpap/mvn-openjdk-8:harness /bin/bash -c "
+            cd payment-service
+            mvn -Dmaven.test.skip=true clean install -X
+            ls -la
+          "
