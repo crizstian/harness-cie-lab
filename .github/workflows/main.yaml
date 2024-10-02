@@ -1,9 +1,8 @@
-name: Compilar Aplicación Java con Maven
+name: Ejecutar Acción mediante HTTP
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types: [run-action] # Define un tipo de evento personalizado
 
 jobs:
   build:
@@ -13,7 +12,5 @@ jobs:
       - name: Comprobar el código
         uses: actions/checkout@v2
 
-        
-      - name: Run commands in Docker container
-        run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace nikpap/mvn-openjdk-8:harness /bin/bash -c "cd payment-service && mvn -Dmaven.test.skip=true clean install -X && ls -la"
+      - name: Ejecutar tarea
+        run: echo "Acción ejecutada a través de HTTP"
