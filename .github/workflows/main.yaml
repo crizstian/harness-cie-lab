@@ -1,0 +1,23 @@
+name: Compilar Aplicación Java con Maven
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Comprobar el código
+        uses: actions/checkout@v2
+
+      - name: Configurar JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11' # Especifica la versión de Java que necesitas
+
+      - name: Compilar con Maven
+        run: mvn clean install
+        working-directory: payment-service
