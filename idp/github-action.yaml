@@ -22,7 +22,7 @@ spec:
       action: http:backstage:request
       input:
         method: 'POST'
-        path: '{{ parameters.idpUrl }}' # URL del IdP proporcionada por el usuario.
+        url: '{{ parameters.idpUrl }}' # URL del IdP proporcionada por el usuario.
         headers:
           Accept: 'application/vnd.github.v3+json'
           Authorization: 'token <+variable.account.gitoken>'
