@@ -19,10 +19,10 @@ spec:
         ui:field: HarnessAuthToken    
       gitOrg:
         type: string
-        title: URL del Proveedor de Identidad
+        title: Git Org
       gitRepo:
         type: string
-        title: URL del Proveedor de Identidad
+        title: Git Repo
   
   steps:
     - id: trigger
