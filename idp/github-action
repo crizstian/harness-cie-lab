@@ -1,0 +1,31 @@
+apiVersion: backstage.io/v1beta3
+kind: Template
+metadata:
+  name: Trigger-Github-Action
+  title: Trigger Github Action
+spec:
+  parameters:
+    type: object
+    properties:
+      idpUrl:
+        type: string
+        title: URL del Proveedor de Identidad
+      clientSecret:
+        type: string
+        title: Secreto del Cliente
+        description: Este es el secreto que se obtiene de Harness.
+  
+  steps:
+    - id: configure-idp
+      name: Configurar Proveedor de Identidad
+      action: http:backstage:request
+      input:
+        method: 'POST'
+        path: '{{ parameters.idpUrl }}' # URL del IdP proporcionada por el usuario.
+        headers:
+          Accept: 'application/vnd.github.v3+json'
+          Authorization: '{{ secrets.mySecret }}'
+        body:
+          event_type: 'run-action'
+
+
