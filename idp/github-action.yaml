@@ -25,7 +25,7 @@ spec:
         path: '{{ parameters.idpUrl }}' # URL del IdP proporcionada por el usuario.
         headers:
           Accept: 'application/vnd.github.v3+json'
-          Authorization: '{{ secrets.mySecret }}'
+          Authorization: '{{ secrets.cristian_github_token }}'
         body:
           event_type: 'run-action'
 
