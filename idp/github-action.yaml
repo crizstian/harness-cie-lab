@@ -3,21 +3,22 @@ kind: Template
 metadata:
   name: Trigger-Github-Action
   title: Trigger Github Action
+  description: execute github action
+  tags:
+    - github
 spec:
+  owner: cristian.ramirez@harness.io
+  type: service
   parameters:
     type: object
     properties:
       idpUrl:
         type: string
         title: URL del Proveedor de Identidad
-      clientSecret:
-        type: string
-        title: Secreto del Cliente
-        description: Este es el secreto que se obtiene de Harness.
   
   steps:
-    - id: configure-idp
-      name: Configurar Proveedor de Identidad
+    - id: excecut-github-action
+      name: Execute Github Action
       action: http:backstage:request
       input:
         method: 'POST'
