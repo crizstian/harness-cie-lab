@@ -12,22 +12,29 @@ spec:
   parameters:
     type: object
     properties:
-      idpUrl:
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken    
+      gitOrg:
+        type: string
+        title: URL del Proveedor de Identidad
+      gitRepo:
         type: string
         title: URL del Proveedor de Identidad
   
   steps:
-    - id: excecut-github-action
-      name: Execute Github Action
-      action: http:backstage:request
+    - id: trigger
+      name: Provisioning Cloud Component
+      action: trigger:harness-custom-pipeline
       input:
-        method: 'POST'
-        url: '{{ parameters.idpUrl }}' # URL del IdP proporcionada por el usuario.
-        path: /dispatches
-        headers:
-          Accept: 'application/vnd.github.v3+json'
-          Authorization: 'token <+variable.account.gitoken>'
-        body:
-          event_type: 'run-action'
-
-
+        url: https://app.harness.io/ng/account/Io9SR1H7TtGBq9LVyJVB2w/all/orgs/cristian_labs_MQTH/projects/el_canario_team_MQTH/pipelines/Trigger_Github_Actions/pipeline-studio/?storeType=INLINE
+        inputset:
+          gitRepo: ${{ parameters.gitRepo }}
+          gitOrg: ${{ parameters.gitOrg }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
