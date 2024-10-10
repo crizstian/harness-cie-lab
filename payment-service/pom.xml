@@ -225,6 +225,8 @@
 
     <repositories>
 	<repository>
+	    <id>jitpack</id>
+            <name>jitpack</name>
   	    <url>https://jitpack.io</url>
 	</repository>
         <repository>
