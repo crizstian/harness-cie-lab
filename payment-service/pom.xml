@@ -224,6 +224,9 @@
     </build>
 
     <repositories>
+	<repository>
+  	    <url>https://jitpack.io</url>
+	</repository>
         <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
