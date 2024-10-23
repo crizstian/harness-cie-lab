@@ -220,6 +220,19 @@
        				 <useSystemClassLoader>false</useSystemClassLoader>
     			</configuration>
 			</plugin>  
+		    <plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-compiler-plugin</artifactId>
+		      <version>3.8.1</version>
+		      <configuration>
+		        <fork>true</fork>
+		        <executable>${JAVA_HOME}/bin/javac</executable>
+		        <compilerArgs>
+		          <arg>-classpath</arg>
+		          <arg>${java.home}/../lib/tools.jar</arg>
+		        </compilerArgs>
+		      </configuration>
+		    </plugin>		
         </plugins>
     </build>
 
